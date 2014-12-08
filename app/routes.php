@@ -11,11 +11,48 @@
 |
 */
 
+/*
+ * The following routes are for the main functionality of the application
+ */
+
+
+/**
+* Index
+*/
+Route::get('/', 'IndexController@getIndex');
+/**
+* User
+* (Explicit Routing)
+*/
+Route::get('/signup','UserController@getSignup' );
+Route::get('/login', 'UserController@getLogin' );
+Route::post('/signup', 'UserController@postSignup' );
+Route::post('/login', 'UserController@postLogin' );
+Route::get('/logout', 'UserController@getLogout' );
+/**
+* Book
+* (Explicit Routing)
+*/
+Route::get('/book', 'BookController@getIndex');
+Route::get('/book/edit/{id}', 'BookController@getEdit');
+Route::post('/book/edit', 'BookController@postEdit');
+Route::get('/book/create', 'BookController@getCreate');
+Route::post('/book/create', 'BookController@postCreate');
+Route::post('/book/delete', 'BookController@postDelete');
+Route::get('/book/digest', 'BookController@getDigest');
+
+
+/*
+ *  The below routes are sample debugging routes.  I will remove them later.
+ *
+ */
+
+/*
 Route::get('/', function()
 {
 	return View::make('hello');
 });
-
+*/
 Route::get('/practice', function() {
 
     $fruit = Array('Apples', 'Oranges', 'Pears');
@@ -47,6 +84,10 @@ Route::get('mysql-test', function() {
     # If the "Pre" package is not installed, you should output using print_r instead
     echo Pre::render($results);
 
+});
+
+Route::get('/classes', function() {
+    echo Paste\Pre::render(get_declared_classes(),'');
 });
 
 Route::get('/debug', function() {
