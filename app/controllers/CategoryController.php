@@ -78,15 +78,15 @@ class CategoryController extends \BaseController {
 	*/
 	public function getEdit($id) {
 		try {
-		    $book    = Book::findOrFail($id);
-		    $authors = Author::getIdNamePair();
+		    $category   = Category::findOrFail($id);
+		    #$authors = Author::getIdNamePair();
 		}
 		catch(exception $e) {
-		    return Redirect::to('/book')->with('flash_message', 'Book not found');
+		    return Redirect::to('/category')->with('flash_message', 'Category not found');
 		}
-    	return View::make('book_edit')
-    		->with('book', $book)
-    		->with('authors', $authors);
+    	return View::make('category_edit')
+    		->with('category', $category);
+    		#->with('authors', $authors);
 	}
 	/**
 	* Process the "Edit a book form"
@@ -94,31 +94,34 @@ class CategoryController extends \BaseController {
 	*/
 	public function postEdit() {
 		try {
-	        $book = Book::findOrFail(Input::get('id'));
+	        $category = Category::findOrFail(Input::get('id'));
 	    }
 	    catch(exception $e) {
-	        return Redirect::to('/book')->with('flash_message', 'Book not found');
+	        return Redirect::to('/category')->with('flash_message', 'Category not found');
 	    }
 	    # http://laravel.com/docs/4.2/eloquent#mass-assignment
-	    $book->fill(Input::all());
-	    $book->save();
-	   	return Redirect::action('BookController@getIndex')->with('flash_message','Your changes have been saved.');
+	    $category->name = $_POST['name'];
+	    $category->save();
+	   	return Redirect::action('CategoryController@getIndex')->with('flash_message','Your changes have been saved.');
 	}
 	/**
 	* Process book deletion
 	*
 	* @return Redirect
 	*/
-	public function postDelete() {
-		try {
-	        $book = Book::findOrFail(Input::get('id'));
+	public function getDelete($id) {
+		
+	    $category = Category::where('id', '=', $id)->get();
+	    if($category) {
+	    	Category::destroy($id);
+	    	return Redirect::back()->with('flash_message', 'Category deleted');
+	        #return Redirect::to('/task')->with('flash_message', 'Task deleted');
 	    }
-	    catch(exception $e) {
-	        return Redirect::to('/book/')->with('flash_message', 'Could not delete book - not found.');
+	    else {
+	    	return Redirect::back()->with('flash_message', 'Could not delete category.');
+	      	#return Redirect::to('/task')->with('flash_message', 'Could not delete task.');
 	    }
-	    Book::destroy(Input::get('id'));
-	    return Redirect::to('/book/')->with('flash_message', 'Book deleted.');
-	}
+	}	
 	/**
 	* Process a book search
 	* Called w/ Ajax

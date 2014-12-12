@@ -22,8 +22,8 @@
 				*Not Completed*
 			@endif
 			<p>
-				<a href='/book/edit/{{$item['id']}}'>Edit</a>
-				<a href='/book/delete/{{$item['id']}}'>Delete</a>
+				<a href='/task/edit/{{$item['id']}}'>Edit</a>
+				<a href='/task/delete/{{$item['id']}}'>Delete</a>
 			</p>
 		</section>
 	@endforeach

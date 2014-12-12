@@ -12,8 +12,12 @@
 	
 
 	@foreach($categories as $category)
-		<section class='task'>
+		<section class='category'>
 			<h2>{{ $category['id'] }} {{ $category['name'] }}</h2>
+			<p>
+				<a href='/category/edit/{{$category['id']}}'>Edit</a>
+				<a href='/category/delete/{{$category['id']}}'>Delete</a>
+			</p>
 		</section>
 	@endforeach
 

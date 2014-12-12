@@ -34,23 +34,23 @@ Route::get('/logout', 'UserController@getLogout' );
 * (Explicit Routing)
 */
 Route::get('/task', 'ItemController@getIndex');
-Route::get('/task/edit', 'ItemController@getEdit');
+Route::get('/task/edit/{id}', 'ItemController@getEdit');
 Route::post('/task/edit', 'ItemController@postEdit');
 Route::get('/task/create', 'ItemController@getCreate');
 Route::post('/task/create', 'ItemController@postCreate');
-Route::get('/task/delete', 'ItemController@getDelete');
-Route::post('/task/delete', 'ItemController@postDelete');
+Route::get('/task/delete/{id}', 'ItemController@getDelete');
+#Route::post('/task/delete', 'ItemController@postDelete');
 /**
 * Book
 * (Explicit Routing)
 */
 Route::get('/category', 'CategoryController@getIndex');
-Route::get('/task/edit', 'CategoryController@getEdit');
-Route::post('/task/edit', 'CategoryController@postEdit');
+Route::get('/category/edit/{id}', 'CategoryController@getEdit');
+Route::post('/category/edit', 'CategoryController@postEdit');
 Route::get('/category/create', 'CategoryController@getCreate');
 Route::post('/category/create', 'CategoryController@postCreate');
-Route::get('/task/delete', 'CategoryController@getDelete');
-Route::post('/task/delete', 'CategoryController@postDelete');
+Route::get('/category/delete/{id}', 'CategoryController@getDelete');
+#Route::post('/task/delete', 'CategoryController@postDelete');
 
 /*
  *  The below routes are sample debugging routes.  I will remove them later.
