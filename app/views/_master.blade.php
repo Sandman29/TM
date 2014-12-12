@@ -24,8 +24,13 @@
 		@if(Auth::check())
 			<li><a href='/logout'>Log out {{ Auth::user()->email; }}</a></li>
 			<li><a href='/task'>All Tasks</a></li>
-			<li><a href='/categories'>All Categories</a></li>
+			<li><a href='/category'>All Categories</a></li>
 			<li><a href='/task/create'>+ Add Task</a></li>
+			<li><a href='/category/create'>+ add Category</a></li>
+			<li><a href='/task/edit'>Edit Task</a></li>
+			<li><a href='/category/edit'>Edit Category</a></li>
+			<li><a href='/task/delete'>- Delete Task</a></li>
+			<li><a href='/category/delete'>- Delete Category</a></li>
 		@else
 			<li><a href='/signup'>Sign up</a> or <a href='/login'>Log in</a></li>
 		@endif
@@ -36,7 +41,7 @@
 
 	@yield('content')
 
-	@yield('/body')
+
 	</div>
 </body>
 </html>

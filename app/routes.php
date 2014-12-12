@@ -30,17 +30,27 @@ Route::post('/signup', 'UserController@postSignup' );
 Route::post('/login', 'UserController@postLogin' );
 Route::get('/logout', 'UserController@getLogout' );
 /**
+* Task (or what I call Item)
+* (Explicit Routing)
+*/
+Route::get('/task', 'ItemController@getIndex');
+Route::get('/task/edit', 'ItemController@getEdit');
+Route::post('/task/edit', 'ItemController@postEdit');
+Route::get('/task/create', 'ItemController@getCreate');
+Route::post('/task/create', 'ItemController@postCreate');
+Route::get('/task/delete', 'ItemController@getDelete');
+Route::post('/task/delete', 'ItemController@postDelete');
+/**
 * Book
 * (Explicit Routing)
 */
-Route::get('/book', 'BookController@getIndex');
-Route::get('/book/edit/{id}', 'BookController@getEdit');
-Route::post('/book/edit', 'BookController@postEdit');
-Route::get('/book/create', 'BookController@getCreate');
-Route::post('/book/create', 'BookController@postCreate');
-Route::post('/book/delete', 'BookController@postDelete');
-Route::get('/book/digest', 'BookController@getDigest');
-
+Route::get('/category', 'CategoryController@getIndex');
+Route::get('/task/edit', 'CategoryController@getEdit');
+Route::post('/task/edit', 'CategoryController@postEdit');
+Route::get('/category/create', 'CategoryController@getCreate');
+Route::post('/category/create', 'CategoryController@postCreate');
+Route::get('/task/delete', 'CategoryController@getDelete');
+Route::post('/task/delete', 'CategoryController@postDelete');
 
 /*
  *  The below routes are sample debugging routes.  I will remove them later.
