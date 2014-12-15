@@ -21,6 +21,11 @@
 		{{ Form::label('due_date', 'Due Date (mm/dd/yy)') }}
 		{{ Form::text('due_date'); }}
 
+		<br/><br/>
+		@foreach($categories as $id => $category)
+			{{ Form::checkbox('categories[]', $id); }} {{ $id }}{{ $category->name }}
+		@endforeach
+		<br/><br/>
 		{{ Form::submit('Add'); }}
 
 	{{ Form::close() }}

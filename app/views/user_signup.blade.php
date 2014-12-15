@@ -14,12 +14,6 @@
 
 {{ Form::open(array('url' => '/signup')) }}
 
-    {{ Form::label('First Name') }}
-    {{ Form::text('first_name') }}
-
-    {{ Form::label('Last Name') }}
-    {{ Form::text('last_name') }}
-
     {{ Form::label('email') }}
     {{ Form::text('email') }}
 
