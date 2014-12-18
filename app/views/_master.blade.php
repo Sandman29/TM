@@ -25,6 +25,10 @@
 			<li><a href='/logout'>Log out {{ Auth::user()->email; }}</a></li>
 			<br/>
 			<li><a href='/task'>All Tasks</a></li>
+			<ul>
+				<li><a href='/task/completed-task'>Completed Tasks</a></li>
+				<li><a href='/task/not-completed-tasks'>Not Completed Tasks</a></li>
+			</ul>
 			<li><a href='/category'>All Categories</a></li>
 			<li><a href='/task/create'>+ Add Task</a></li>
 			<li><a href='/category/create'>+ Add Category</a></li>

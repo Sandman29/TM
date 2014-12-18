@@ -17,15 +17,42 @@ class ItemController extends \BaseController {
 		
 		
 		$items = Item::all();
+		$title['name'] = 'All Tasks';
 		
 		if($items->isEmpty() != TRUE) {
-        	return View::make('item_list')->with('items',$items);
-    }
+        	return View::make('item_list')->with('items',$items)->with('title',$title);
+    	}
     	else {
         	return Redirect::action('IndexController@getIndex')->with('flash_message','No Tasks to display.');;
+    	}
     }
 
+    public function getCompetedTasks() {
 		
+		
+		$items = Item::where('is_completed', '=', 1)->get();
+		$title['name'] = 'Completed Tasks';
+		
+		if($items->isEmpty() != TRUE) {
+        	return View::make('item_list')->with('items',$items)->with('title',$title);
+    	}
+    	else {
+        	return Redirect::action('IndexController@getIndex')->with('flash_message','No Tasks to display.');;
+    	}
+    }
+
+    public function getNotCompletedTasks() {
+		
+		
+		$items = Item::where('is_completed', '!=', 1)->get();
+		$title['name'] = 'Not Completed Tasks';
+		
+		if($items->isEmpty() != TRUE) {
+        	return View::make('item_list')->with('items',$items)->with('title',$title);
+    	}
+    	else {
+        	return Redirect::action('IndexController@getIndex')->with('flash_message','No Tasks to display.');;
+    	}	
 	}
 	/**
 	* Show the "Add a task form"
@@ -62,7 +89,7 @@ class ItemController extends \BaseController {
 			#echo Category::find($category);
 		}
 		*/
-		return Redirect::action('IndexController@getIndex')->with('flash_message','Your book has been added.');
+		return Redirect::action('IndexController@getIndex')->with('flash_message','Your task has been added.');
 	}
 	/**
 	* Show the "Edit a task form"
@@ -115,6 +142,15 @@ class ItemController extends \BaseController {
 	    	return Redirect::back()->with('flash_message', 'Could not delete task.');
 	      	#return Redirect::to('/task')->with('flash_message', 'Could not delete task.');
 	    }
+	}
+
+	public function getCompleted($id) {
+		 $item    = Item::findOrFail($id);
+		 $item->is_completed = 1;
+		 $item->completion_date = date('Y-m-d H:i:s');
+		 $item->save();
+		 return Redirect::back()->with('flash_message', 'Task completed '.$id.' '.$item->is_completed);
+
 	}	
 	
 }

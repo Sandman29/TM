@@ -1,7 +1,7 @@
 @extends('_master')
 
 @section('title')
-	All Tasks
+	All Categories
 @stop
 
 @section('content')
@@ -13,7 +13,7 @@
 
 	@foreach($categories as $category)
 		<section class='category'>
-			<h2>{{ $category['id'] }} {{ $category['name'] }}</h2>
+			<h2>{{ $category['name'] }}</h2>
 			<p>
 				<a href='/category/edit/{{$category['id']}}'>Edit</a>
 				<a href='/category/delete/{{$category['id']}}'>Delete</a>

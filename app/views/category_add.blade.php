@@ -1,7 +1,7 @@
 @extends('_master')
 
 @section('title')
-	Add a new book
+	Add a new category
 @stop
 
 @section('head')

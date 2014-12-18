@@ -25,7 +25,7 @@
 
 		
 		<div class='form-group'>
-			{{ Form::label('due_date','Due Date (mm/dd/yy)') }}
+			{{ Form::label('due_date','Due Date (yyyy-mm-dd)') }}
 			{{ Form::text('due_date',$item['due_date']); }}
 		</div>
 

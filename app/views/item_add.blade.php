@@ -1,7 +1,7 @@
 @extends('_master')
 
 @section('title')
-	Add a new book
+	Add a new task
 @stop
 
 @section('head')
@@ -23,7 +23,7 @@
 
 		<br/><br/>
 		@foreach($categories as $id => $category)
-			{{ Form::checkbox('categories[]', $id); }} {{ $id }}{{ $category->name }}
+			{{ Form::checkbox('categories[]', $id); }} {{ $category->name }}
 		@endforeach
 		<br/><br/>
 		{{ Form::submit('Add'); }}
